@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PETLAMDIA — Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../CSS/indexa.css" />
+</head>
+<body>
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">PET LAMDIA</div>
+    <button id="closeSidebar" class="icon-btn close-sidebar-btn" title="Close Menu" aria-label="Close Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </button>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a href="alert.html">Alert</a>
+      <a href="record.html">Record</a>
+      <a href="diagnostic.html">Diagnostic</a>
+    </nav>
+  </aside>
+
+  <button id="menuBtn" class="icon-btn nav-trigger-btn" title="Menu" aria-label="Open Menu">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <main class="content">
+    <header class="toolbar">
+      <div class="toolbar-actions">
+        <button id="noteBtn" class="icon-btn" title="Notes" aria-label="Notes">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M3 5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zM14 3v4a1 1 0 0 0 1 1h4" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <button id="addOwner" class="primary">+ Add Owner</button>
+      </div>
+    </header>
+
+    <section class="headline">
+      <h2>Registered Owners</h2>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Owners</span>
+        <span class="value" id="ownersCount">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">Dogs</span>
+        <span class="value">0</span>
+      </div>
+    </section>
+
+    <div class="searchbar">
+      <input id="searchInput" placeholder="Search owners by name or email..." />
+    </div>
+
+    <section id="ownersGrid" class="grid"></section>
+  </main>
+
+  <aside id="notesDrawer" class="notes">
+    <div class="notes-head">
+      <h3>Notes</h3>
+      <button id="closeNotes" class="icon-btn" aria-label="Close Notes">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+    </div>
+    <form id="noteForm" class="note-form">
+      <textarea id="noteText" rows="4" placeholder="Write a note..."></textarea>
+      <button class="primary" type="submit">Save Note</button>
+    </form>
+    <div id="notesList" class="notes-list"></div>
+  </aside>
+
+  <div id="ownerModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="modalTitle">Add Owner</h3>
+        <button id="closeModal" class="icon-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </button>
+      </div>
+      <form id="ownerForm" enctype="multipart/form-data">
+        <input type="hidden" name="id" id="ownerId" />
+        <div class="grid-form">
+          <label>Name<input name="name" id="name" required /></label>
+          <label>Phone No.<input name="phone" id="phone" required /></label>
+          <label>Email<input type="email" name="email" id="email" required /></label>
+          <label>Address<input name="address" id="address" required /></label>
+          <label>Password<input type="password" name="password" id="password" required /></label>
+          <label>Image<input type="file" name="image" id="image" accept="image/*" /></label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="ghost" id="cancelModal">Cancel</button>
+          <button class="primary" type="submit" id="saveOwner">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="confirmModal" class="modal">
+    <div class="modal-card" style="max-width:420px">
+      <div class="modal-head">
+        <h3 id="confirmTitle">Please Confirm</h3>
+      </div>
+      <div id="confirmMessage" style="margin:8px 0 6px;color:#cbd5e1"></div>
+      <div class="modal-actions">
+        <button class="ghost" id="confirmCancel">Cancel</button>
+        <button class="primary" id="confirmOk">Yes, Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../JS/indexa.js" defer></script>
+</body>
+</html>

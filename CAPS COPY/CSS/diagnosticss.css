@@ -1,0 +1,168 @@
+:root {
+  /* Applying the formal, light, clinical theme */
+  --bg:#f1f5f9;
+  --panel:#ffffff;
+  --panel-2:#e2e8f0;
+  --muted:#64748b;
+  --text:#1e293b;
+  --brand:#0d9488;
+  --accent:#06b6d4;
+  --border:#cbd5e1;
+  --red:#ef4444;
+  --sidebar-bg: #daefff;
+  --sidebar-hover: #b4e0fa;
+}
+
+/* Base modal styling for centering (for selectionModal, diagnosticModal, editModal, confirmModal) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); 
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--panel); 
+    color: var(--text);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    margin: 10vh auto;
+    position: relative;
+    padding: 20px;
+    border: 1px solid var(--border);
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Modal header for the selection modal */
+#selectionModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+#selectionModal h2 {
+    color: var(--brand);
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.close-btn {
+    color: var(--muted);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--text);
+}
+
+/* Container for the action buttons in the selection modal */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* General button styling to ensure theme consistency */
+.primary-btn {
+    background: linear-gradient(90deg, var(--brand), var(--accent));
+    color: white;
+    font-weight: 700;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: filter 0.2s;
+}
+
+.primary-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Secondary button for consistency with Ghost style */
+.secondary-btn {
+    background: transparent; 
+    border: 1px solid var(--border); 
+    color: var(--text); 
+    padding: 12px 16px; 
+    border-radius: 12px; 
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+.secondary-btn:hover {
+    background: var(--panel-2);
+}
+
+/* Styles for the cat card grid items (borrowed from index.css logic) */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.cat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+/* Subtle hover effect for the light theme */
+.cat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+/* UPDATED: Change initials background to use brand color */
+.initials {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: var(--brand);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.cat-info h4 {
+    margin: 0 0 4px 0;
+    color: var(--text);
+}
+
+.cat-info p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}

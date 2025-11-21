@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Alert • All Dogs</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../CSS/indexa.css" />
+  <link rel="stylesheet" href="../CSS/alert.css" />
+  <style>
+    .nav-alert-icon {
+        display: inline-block;
+        margin-left: 5px;
+        color: #ef4444;
+        font-size: 1.2em;
+    }
+    .heartbeat-alert {
+        color: #ef4444;
+        font-weight: bold;
+    }
+    .abnormal-icon {
+        margin-left: 0.25rem;
+    }
+    .sidebar nav a:hover{
+        background-color: #7ac6bf;
+    }
+    /* NEW RESPONSIVE STYLES for Menu Toggle */
+    .close-sidebar-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        padding: 8px;
+        display: none; /* Hidden by default on desktop */
+    }
+    .nav-trigger-btn{
+      display:none; /* Hidden by default on desktop */
+      position:fixed; top:18px; left:18px; 
+      z-index:10;
+    }
+    @media (max-width: 768px){
+        .sidebar{
+            transform: translateX(-100%); /* Start hidden */
+            transition: transform .3s ease-out;
+            z-index: 50;
+        }
+        .sidebar.open{
+            transform: translateX(0); /* Slide in when open */
+            box-shadow: 0 0 50px rgba(0,0,0,.3);
+        }
+        /* Hide the open menu button when the sidebar is open */
+        .sidebar.open ~ .nav-trigger-btn {
+            display: none;
+        }
+        .close-sidebar-btn, .nav-trigger-btn {
+            display: block; /* Show buttons on mobile */
+        }
+        .content{
+            margin-left: 0; /* Full width content */
+        }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">PET LAMDIA</div>
+    <button id="closeSidebar" class="icon-btn close-sidebar-btn" title="Close Menu" aria-label="Close Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </button>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a class="active">Alert <span id="navAlertIcon" class="nav-alert-icon" style="display:none;"></span></a>
+      <a href="record.html">Record</a>
+      <a href="diagnostic.html">Diagnostic</a>
+    </nav>
+  </aside>
+  
+  <button id="menuBtn" class="icon-btn nav-trigger-btn" title="Menu" aria-label="Open Menu">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <main class="content">
+    <header class="toolbar">
+      <h2 style="margin:0; margin-bottom: 30px;">All Registered Dogs</h2>
+    </header>
+
+    <section id="catsGrid" class="grid"></section>
+
+    <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <script src="../JS/alertas.js" defer></script>
+</body>
+</html>

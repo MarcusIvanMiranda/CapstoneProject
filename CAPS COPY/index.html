@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="CSS/indexa.css"> 
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1 class="brand">SYSTEM LOGIN</h1>
+            <p>Use the default credentials to access the dashboard.</p>
+            
+            <form id="loginForm" class="login-form">
+                <label for="username">
+                    Username
+                    <input type="text" id="username" name="username" required>
+                </label>
+                
+                <label for="password">
+                    Password
+                    <input type="password" id="password" name="password" required>
+                </label>
+                
+                <p id="errorMessage" class="error-message"></p>
+                
+                <button type="submit" class="primary login-btn">Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

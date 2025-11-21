@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dog • Graph</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../CSS/indexa.css" />
+  <link rel="stylesheet" href="../CSS/graphsssss.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    .nav-alert-icon {
+        display: inline-block;
+        margin-left: 5px;
+        color: #ef4444;
+        font-size: 1.2em;
+    }
+    .box.chart {
+        height: 300px;
+        overflow-x: auto; 
+        overflow-y: hidden;
+        min-height: 300px; 
+    }
+    #chartWrapper {
+        height: 100%;
+    }
+    .status-reading {
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .status-reading.normal {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+    .status-reading.abnormal {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+    .status-reading.small {
+        font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">PET LAMDIA</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="alert.html">Alert <span id="navAlertIcon" class="nav-alert-icon" style="display:none;">⚠️</span></a>
+      <a href="record.html">Record</a>
+      <a href="diagnostic.html">Diagnostic</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="toolbar">
+      <a style="margin-bottom: 10px;" class="ghost" href="javascript:history.back()">← Back</a>
+    </header>
+
+    <section class="graph-layout">
+      <div id="infoPanel" class="panel info-panel"></div>
+
+      <div class="panel right-panel">
+        <div class="right-top">
+          <div class="box chart" id="chartBox">
+            <div class="ph-title">HeartBeat Over Time</div>
+            <div id="chartWrapper"> 
+                <canvas id="heartbeatChart"></canvas>
+            </div>
+          </div>
+          <div class="box bpm" id="bpmBox">
+            <div class="bpm-value" id="bpmValue">--</div>
+            <div>HeartBeat Per Minute</div>
+            <div id="bpmUpdated">--</div>
+          </div>
+        </div>
+
+        <div class="box diseases" id="diseasesBox">
+          <div class="ph-title">Heartbeat Pattern Reading</div>
+          <div id="heartbeatReading" class="status-reading"></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <script src="../JS/graphs.js" defer></script>
+</body>
+</html>

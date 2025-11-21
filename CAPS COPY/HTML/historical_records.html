@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Dog • Records</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="../CSS/indexa.css" />
+    <link rel="stylesheet" href="../CSS/records.css" />
+    <style>
+      .nav-alert-icon {
+          display: inline-block;
+          margin-left: 5px;
+          color: #ef4444; /* red-500 */
+          font-size: 1.2em;
+      }
+      .record-layout {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+      }
+      .record-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+      }
+      .record-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px;
+          background-color: #d1e9f5; /* gray-800 */
+          border-radius: 8px;
+          border: 1px solid #daefff; /* gray-700 */
+      }
+      .record-item .time {
+          font-size: 1rem;
+          color: #000; /* gray-400 */
+      }
+      .record-item .bpm {
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: #000;
+      }
+      .record-item .status {
+          font-weight: bold;
+          padding: 4px 12px;
+          border-radius: 9999px; /* full-rounded */
+          font-size: 0.875rem;
+      }
+      .record-item .status.normal {
+          background-color: #d1fae5; /* green-100 */
+          color: #065f46; /* green-800 */
+      }
+      .record-item .status.abnormal {
+          background-color: #fee2e2; /* red-100 */
+          color: #991b1b; /* red-800 */
+      }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">PET LAMDIA</div>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="alert.html">Alert <span id="navAlertIcon" class="nav-alert-icon" style="display:none;">⚠️</span></a>
+            <a href="record.html" class="active">Record</a>
+            <a href="diagnostic.html">Diagnostic</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="toolbar">
+            <a class="ghost" href="javascript:history.back()">← Back</a>
+        </header>
+
+        <section class="record-layout">
+            <div id="infoPanel" class="panel info-panel"></div>
+
+            <div class="panel records-panel">
+                <div class="ph-title">Heartbeat Records</div>
+                <div id="recordsList" class="record-list">
+                    </div>
+            </div>
+        </section>
+
+        <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+    </main>
+
+    <script src="../JS/historical_record.js" defer></script>
+</body>
+</html>

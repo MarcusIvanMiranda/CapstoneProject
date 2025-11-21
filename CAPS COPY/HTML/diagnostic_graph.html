@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Diagnostic Graph • Dog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../CSS/indexa.css" />
+  <link rel="stylesheet" href="../CSS/diagnosticss.css" />
+  <link rel="stylesheet" href="../CSS/diagnostic_graphssss.css" /> 
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">PET LAMDIA</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="alert.html">Alert</a>
+      <a href="record.html">Record</a>
+      <a href="diagnostic.html">Diagnostic</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="toolbar">
+      <a class="ghost" href="javascript:history.back()">← Back</a>
+    </header>
+
+    <section class="log-header">
+        <h2 style="margin:0">Diagnostic Graph (Comparison)</h2>
+    </section>
+
+    <section id="catInfoContainer" class="cat-info">
+      <div id="cat-avatar-placeholder" class="initials">?</div>
+      <div>
+        <h2 id="cat-name-placeholder">Loading...</h2>
+        <div id="cat-details-placeholder" style="color:var(--muted);">Breed: — | Owner: — | Reg. Date: —</div>
+      </div>
+    </section>
+
+    <section class="log-controls" style="margin-bottom: 30px; display: flex; gap: 20px;">
+        <div class="time-range-group">
+            <label for="time-range-select">Comparison Time Range:</label>
+            <select id="time-range-select" class="time-range-dropdown">
+                <option value="day" selected>Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">Year</option>
+            </select>
+        </div>
+        
+        <div class="view-mode-group">
+            <label for="view-mode-select">View Mode:</label>
+            <select id="view-mode-select" class="time-range-dropdown">
+                <option value="list" selected>List View</option>
+                <option value="graph">Line Graph</option>
+            </select>
+        </div>
+    </section>
+    
+    <section class="comparison-section">
+      <div class="comparison-container" id="current-container-wrapper">
+        <div class="comparison-header">
+          <h4 id="log-header-text">Current Log (Day)</h4>
+          <input type="date" id="diagnostic-date" class="date-input-style">
+        </div>
+        <div id="current-log-container" class="heartbeat-log-placeholder">
+            <p>Loading heartbeat logs...</p>
+        </div>
+      </div>
+
+      <div class="comparison-container" id="comparison-container-wrapper">
+        <div class="comparison-header">
+          <h4 id="comp-header-text">Comparison Period (Day)</h4>
+          <input type="date" id="comparison-period-date" class="date-input-style">
+        </div>
+        <div id="comparison-log-container" class="heartbeat-log-placeholder">
+            <p>Loading comparison logs...</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="comparison-header">
+                <h4>Possible Diseases (Current Log)</h4>
+            </div>
+            <div id="current-diseases-container" class="disease-log-placeholder">
+                <p>List of potential short-term or primary diagnoses based on current logs.</p>
+            </div>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-header">
+                <h4>Possible Diseases (Comparison Log)</h4>
+            </div>
+            <div id="comparison-diseases-container" class="disease-log-placeholder">
+                <p>List of potential long-term or secondary diagnoses/notes.</p>
+            </div>
+        </div>
+    </section>
+    
+    <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+  </main>
+  
+  <div id="confirmModal" class="modal">
+    <div class="modal-content" style="max-width:420px; padding: 20px;">
+      <div class="modal-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 10px;">
+        <h3 id="confirmTitle" style="color: var(--text); margin: 0;">Please Confirm</h3>
+      </div>
+      <div id="confirmMessage" style="margin-bottom: 15px; color: var(--muted);"></div>
+      <div class="modal-actions" style="flex-direction: row; justify-content: flex-end; gap: 10px;">
+        <button class="ghost" id="confirmCancel" style="background: var(--panel); color: var(--text); border: 1px solid var(--border);">Cancel</button>
+        <button class="primary-btn" id="confirmOk">Yes, Continue</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../JS/diagnostic_graph.js" defer></script>
+</body>
+</html>

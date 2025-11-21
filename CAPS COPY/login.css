@@ -1,0 +1,78 @@
+/* login.css - UPDATED TO USE CSS VARIABLES */
+
+/* Center the login container using Flexbox */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    /* Removed redundant background here as it's defined on the body in index.css */
+    /* background: radial-gradient(1200px 600px at 60% -10%, #f8fafc 0, var(--bg) 50%); */
+}
+
+/* Style the login card */
+.login-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    width: min(400px, 90vw);
+    text-align: center;
+    /* Soft shadow adjusted for light theme - original rgba(0,0,0,0.08) is fine */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+}
+
+.login-card h1.brand {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    /* Keeping text color inherit or relying on body text color */
+}
+
+.login-card p {
+    color: var(--muted);
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+/* Style the form elements */
+.login-form {
+    display: grid;
+    gap: 15px;
+    text-align: left;
+}
+
+.login-form label {
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.login-form input {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+    border-color: var(--brand); /* Use the brand color for focus */
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 10px;
+    /* The primary class in index.css handles the button styling */
+}
+
+.error-message {
+    color: var(--red); /* Use the red variable */
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+    min-height: 1.5em; /* Reserve space for error message */
+}

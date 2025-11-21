@@ -1,0 +1,171 @@
+/* =======================
+   owner.css — Owner page
+   (extends index.css theme)
+   ======================= */
+
+:root{
+  /* Updated for a formal, light, clinical theme */
+  --bg:#f1f5f9;       /* Light slate background */
+  --panel:#ffffff;    /* White panel/card background */
+  --panel-2:#e2e8f0;  /* Light gray secondary panel/input background */
+  --muted:#64748b;    /* Soft gray muted text */
+  --text:#1e293b;     /* Slightly bluer dark text */
+  --brand:#0d9488;    /* Teal/Clinical Green Brand */
+  --accent:#06b6d4;   /* Sky Blue Accent */
+  --border:#cbd5e1;   /* Light gray border */
+  --red:#ef4444;      /* Red for errors/deletes */
+  --sidebar-bg: #daefff; /* Light blue for navigation */
+  --sidebar-hover: #b4e0fa; /* Slightly deeper blue for hover state */
+}
+
+/* Reuse fixed sidebar from index.css (loaded first).
+   If owner.html loads owner.css WITHOUT index.css, keep these lines: */
+.sidebar{
+  position:fixed; top:0; left:0; bottom:0;
+  width:230px; height:100vh;
+  /* UPDATED: Use light blue background */
+  background:var(--sidebar-bg); border-right:1px solid var(--border); padding:18px;
+  overflow-y:auto;
+  /* Ensure transform is set for mobile transition */
+  transform: translateX(0);
+  transition: transform .3s ease-out;
+  z-index: 50;
+}
+.content{ margin-left:230px; padding:24px 32px 60px; min-width:0 }
+
+/* NEW: Mobile Nav Trigger button */
+.nav-trigger-btn{
+  display:none; /* Hidden by default on desktop */
+  position:fixed; top:18px; left:18px; 
+  z-index:10; /* Lower z-index as requested */
+}
+
+/* NEW: Style for the close button inside the sidebar */
+.close-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    display: none; /* Hidden by default on desktop */
+}
+
+/* Owner info card */
+.owner-card{
+  background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px;
+  display:flex; gap:16px; align-items:center; margin-top:16px
+}
+.owner-card .avatar{width:80px;height:80px;border-radius:16px;object-fit:cover;border:1px solid var(--border)}
+/* UPDATED: Change initials background to use brand color for consistency */
+.owner-card .initials{width:80px;height:80px;border-radius:16px;background:var(--brand);color:white;display:grid;place-items:center;font-weight:800;font-size:28px}
+.owner-card h2{margin:0 0 4px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--panel-2);border:1px solid var(--border);padding:6px 10px;border-radius:10px;margin:6px 6px 0 0;color:var(--muted);font-size:12px}
+
+/* Headline above cats */
+.headline h2{margin:18px 0 6px}
+.headline p{margin:0;color:var(--muted)}
+
+/* Cat grid (reuse .grid, .card from index.css) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px;margin-top:16px}
+.card .note{color:var(--muted); font-size:13px; margin-top:6px; max-height:3.2em; overflow:hidden}
+
+/* Modal for cats — reuse same look */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;z-index:40}
+.modal.open{display:grid}
+/* UPDATED: Reduced max-width (720px -> 600px) and added max-height/overflow for scrollability */
+.modal-card{
+  background:var(--panel); border:1px solid var(--border); border-radius:16px; 
+  width:min(600px,92vw); /* Smaller width */
+  max-height:90vh; /* Constrain height to 90% of viewport */
+  overflow-y:auto; /* Enable vertical scrolling */
+  padding:16px
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+/* Default form is 2 columns */
+.grid-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.grid-form label{display:grid;gap:6px;color:var(--muted);font-size:13px}
+.grid-form input, .grid-form textarea{background:var(--panel-2);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+
+/* Buttons (mirror index) */
+.icon-btn{
+  background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+  padding:10px; border-radius:12px; cursor:pointer;
+}
+/* UPDATED: Light theme hover effect */
+.icon-btn:hover{filter:brightness(0.95)}
+.primary{
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+  border:none; 
+  /* UPDATED: Change text color to white for better contrast on gradient background */
+  color:white; 
+  font-weight:700; padding:12px 16px; border-radius:12px; cursor:pointer;
+}
+.ghost{background:transparent; border:1px solid var(--border); color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer}
+
+/* Toasts (same as index) */
+.toast-area{position:fixed;right:18px;bottom:18px;display:grid;gap:10px;z-index:60}
+.toast{min-width:260px;max-width:420px;background:var(--panel);border:1px solid var(--border);color:var(--text);
+  border-left:6px solid var(--brand);padding:12px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.15);display:grid;gap:4px;animation:toast-in .2s ease}
+.toast.success{border-left-color:#22c55e}.toast.error{border-left-color:#ef4444}.toast.info{border-left-color:var(--accent)} /* Use accent var */
+.toast .title{font-weight:800}.toast .msg{color:var(--muted);font-size:13px}
+.toast .row{display:flex;justify-content:space-between;align-items:center}
+.toast button{background:transparent;border:none;color:var(--muted);cursor:pointer;padding:6px 8px;border-radius:8px}
+/* UPDATED: Light theme hover effect */
+.toast button:hover{background:rgba(0,0,0,.05);color:var(--text)}
+@keyframes toast-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes toast-out{to{opacity:0;transform:translateY(8px)}}
+
+/* Kebab menu behavior (reused) */
+.kebab{ position:absolute; right:10px; top:10px; display:flex; gap:6px; }
+.kebab .menu{
+  position:absolute; right:0; top:38px; background:var(--panel-2); border:1px solid var(--border);
+  border-radius:12px; overflow:hidden; display:none; min-width:120px; z-index:5;
+}
+.kebab .menu.open{display:block}
+.kebab .menu button{width:100%; background:transparent; color:var(--text); border:none; padding:10px 12px; text-align:left; cursor:pointer}
+/* UPDATED: Light theme hover effect */
+.kebab .menu button:hover{background:var(--panel-2)}
+
+/* Responsive tweak */
+@media (max-width: 900px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+}
+
+/* --- Mobile Responsive Layout (768px) --- */
+@media (max-width: 768px){
+  /* Mobile Layout - Sidebar Overlay */
+  .sidebar{
+    transform: translateX(-100%); /* Start hidden */
+  }
+  .sidebar.open{
+    transform: translateX(0); /* Slide in when open */
+    box-shadow: 0 0 50px rgba(0,0,0,.3);
+  }
+  
+  /* HIDE the menu button when the sidebar is open */
+  .sidebar.open ~ .nav-trigger-btn {
+      display: none;
+  }
+  
+  .content{
+    margin-left: 0; /* Full width content */
+    padding: 16px 18px 60px 18px; /* Adjusted padding */
+  }
+  .nav-trigger-btn{
+    display: block; /* Show the menu button */
+  }
+  /* Show the close button inside the sidebar on mobile */
+  .close-sidebar-btn {
+    display: block;
+  }
+  
+  /* Make modal form single column on mobile */
+  .grid-form {
+      grid-template-columns: 1fr;
+  }
+  
+  /* Grid Adjustment */
+  .grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+}

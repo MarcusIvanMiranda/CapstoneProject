@@ -1,0 +1,147 @@
+:root{
+  /* Updated for a formal, light, clinical theme */
+  --bg:#f1f5f9;
+  --panel:#ffffff;
+  --panel-2:#e2e8f0;
+  --muted:#64748b;
+  --text:#000;
+  --brand:#0d9488;
+  --accent:#06b6d4;
+  --border:#cbd5e1;
+  --red:#ef4444;
+  --sidebar-bg: #daefff;
+  --sidebar-hover: #b4e0fa;
+}
+
+/* Layout: stack info top, graphs below */
+.graph-layout{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:16px;
+}
+
+/* Panels */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+/* Info panel */
+.info-panel{
+  display:grid; gap:10px
+}
+.cat-head{
+  display:flex; 
+  gap:14px; 
+  align-items:center
+}
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:16px;
+  object-fit:cover;
+  border:1px solid var(--border);
+}
+/* UPDATED: Change initials background to use brand color */
+.initials{
+  width:72px;
+  height:72px;
+  border-radius:16px;
+  background:var(--brand);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  font-size:26px;
+}
+.info-name{
+  margin:0 0 2px 0;
+  font-size:18px;
+  font-weight:800;
+}
+.badges{
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:6px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--panel-2);
+  border:1px solid var(--border);
+  padding:6px 10px;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:12px;
+}
+.note{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* Right area stacked below info */
+.right-panel{
+  display:grid; 
+  gap:16px;
+}
+
+/* Graph + bpm row */
+.right-top{
+  display:grid; 
+  grid-template-columns: 1fr 280px; 
+  gap:16px;
+}
+
+.box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+.box.chart{
+  padding:16px;
+}
+.ph-title{
+  font-weight:700; 
+  color:var(--text); 
+  margin-bottom:12px;
+}
+
+/* BPM box styling */
+.bpm{
+  text-align:center; 
+  display:grid; 
+  place-items:center;
+}
+.bpm-value{
+  font-size:60px; 
+  font-weight:900; 
+  color:#0d9488;
+  line-height:1
+}
+.bpm-updated{
+  font-size:12px; 
+  color:#000;
+  font-weight: 100;
+  margin-top:8px
+}
+
+/* Diseases box styling */
+.diseases{
+  grid-column: 1/-1;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  /* BPM box stacks below graph */
+  .right-top{
+    grid-template-columns: 1fr
+  }
+  .box.chart{
+    height:300px
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Diagnostic • All Dogs</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../CSS/indexa.css" />
+  <link rel="stylesheet" href="../CSS/diagnosticss.css" />
+</head>
+<body>
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">PET LAMDIA</div>
+    <button id="closeSidebar" class="icon-btn close-sidebar-btn" title="Close Menu" aria-label="Close Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </button>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="alert.html">Alert</a>
+      <a href="record.html">Record</a>
+      <a class="active">Diagnostic</a>
+    </nav>
+  </aside>
+
+  <button id="menuBtn" class="icon-btn nav-trigger-btn" title="Menu" aria-label="Open Menu">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <main class="content">
+    <header class="toolbar">
+      <h2 style="margin:0; margin-bottom: 20px;">All Registered Dogs</h2>
+    </header>
+
+    <section id="catsGrid" class="grid"></section>
+
+    <div id="toastArea" class="toast-area" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <div id="selectionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalCatName">Select Action for [Dog Name]</h2>
+        <span class="close-btn" id="closeSelectionModal">&times;</span>
+      </div>
+      <div class="modal-actions">
+        <button id="goToLogBtn" class="primary-btn">
+            Go to Diagnostic Log (History)
+        </button>
+        <button id="goToGraphBtn" class="primary-btn">
+            Go to Diagnostic Graph (Comparison)
+        </button>
+        <button id="goToAnalysisBtn" class="primary-btn">
+            Go to Diagnostic Analysis (Current Log)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../JS/diagnostica.js" defer></script>
+</body>
+</html>
